@@ -1,0 +1,5 @@
+
+# Blender autosave backups - never belong in the repo
+*.blend1
+*.blend2
+
