@@ -48,7 +48,7 @@ If Meshy produces holes, broken geometry, bad topology, or incorrect details, re
 
 Typical cleanup checklist:
 - inspect the entire mesh before editing,
-- confirm scale and intended dimensions,
+- confirm scale and intended dimensions (for creatures, characters, and large props, follow the Grounded Asset Scale Standard in `ASSET_BIBLE.md`),
 - repair obvious holes where practical,
 - remove stray/loose/unintended geometry,
 - remove obvious internal junk,

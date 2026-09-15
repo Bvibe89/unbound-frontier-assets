@@ -75,7 +75,7 @@ Common tasks may include:
 - removing loose/internal junk geometry,
 - correcting normals,
 - simplifying excessive generated topology,
-- adjusting scale/origin/transforms,
+- adjusting scale/origin/transforms (for creatures, characters, and large props, follow the Grounded Asset Scale Standard in `ASSET_BIBLE.md` — determine scale from function/analogy/explicit dimensions first, never pick a size class then resize to fit it),
 - reducing material-slot clutter,
 - preserving silhouettes,
 - preparing GLB exports.

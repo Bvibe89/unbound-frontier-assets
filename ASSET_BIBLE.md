@@ -46,6 +46,53 @@ Do not retain high-density generated topology just because Meshy produced it. Ge
 - Apply transforms before final export unless there is a specific reason not to.
 - Keep orientation consistent across related assets.
 
+## Grounded Asset Scale Standard
+
+All creatures, characters, and large props must use believable physical proportions, grounded in a single consistent real-world scale anchor.
+
+**Scale anchor:** average human height ≈ 1.78 m (5'10").
+
+**Visual scale classes** (shorthand labels only — they carry no implication about combat difficulty, boss status, HP, strength, or rarity):
+
+- TINY: under 0.5 m
+- SMALL: 0.5–1.2 m
+- MEDIUM: 1.2–2.0 m
+- LARGE: 2.0–3.5 m
+- HUGE: 3.5–6.0 m
+- MASSIVE: over 6.0 m
+
+**Critical rule: never choose a class first.** Do not pick a size class and then enlarge or shrink an asset to fit it. Determine scale in this order:
+
+1. Intended creature/object function.
+2. Real-world analogy, when one exists.
+3. Plausible explicit dimensions in meters.
+4. Only then assign the nearest scale-class label, as shorthand.
+
+Examples:
+
+- "Human-sized" stays around realistic human dimensions.
+- "Camel-sized" uses plausible camel-like dimensions, not an inflated size merely because LARGE sounds appropriate.
+- A small predator stays genuinely small unless its design explicitly calls for something bigger.
+- HUGE should visually feel enormous beside a 1.78 m human, not merely somewhat taller.
+
+**Owner-specified analogies take priority.** When the owner gives an explicit comparison (dog-sized, human-sized, camel-sized, horse-sized, elephant-sized, etc.), that comparison overrides the generic class bands unless the owner explicitly changes it.
+
+**Record explicit dimensions before modeling.** For every creature/character/large-prop spec, capture the measurements that actually describe its footprint:
+
+- Upright humanoid/biped: standing height.
+- Quadruped/transport creature: shoulder height + body length.
+- Long/low creature: body length + body height.
+- Flying creature: body length + wingspan.
+- Unusually shaped assets: whatever dimensions are needed to understand its actual footprint.
+
+Example record:
+
+`Shoulder height: 1.9 m | Body length: 2.8 m | Scale class: LARGE | Analogy: camel-sized`
+
+The explicit dimensions and approved analogy are authoritative. The TINY/SMALL/MEDIUM/LARGE/HUGE/MASSIVE label is shorthand only, never the source of truth.
+
+**Verify before finalizing.** Before finalizing a model, compare it against a 1.78 m human reference placed in the Blender scene, to catch accidental scale drift.
+
 ## Materials and Textures
 
 - Prefer simple material setups.
