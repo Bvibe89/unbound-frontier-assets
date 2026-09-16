@@ -91,6 +91,8 @@ Example record:
 
 The explicit dimensions and approved analogy are authoritative. The TINY/SMALL/MEDIUM/LARGE/HUGE/MASSIVE label is shorthand only, never the source of truth.
 
+Measured dimensions for shipped assets are recorded in `ASSET_INDEX.md`.
+
 **Verify before finalizing.** Before finalizing a model, compare it against a 1.78 m human reference placed in the Blender scene, to catch accidental scale drift.
 
 ## Materials and Textures
@@ -155,19 +157,47 @@ Raw/source files belong in source folders; approved game exports belong in the G
 
 ## Naming
 
-Use descriptive, stable names. Avoid filenames such as:
+Use descriptive, stable names.
+
+**Format: Title Case With Spaces.** This is the established convention across the
+library and matches the shipped assets. Godot handles spaces in resource paths
+without issue.
+
+Prefer names such as:
+- `Mission Terminal.glb`
+- `Raider Watch Tower.glb`
+- `Desert Rock Outcrop.glb`
+- `Human Base v4 Rigged.blend`
+
+Avoid filenames such as:
 - final_final2,
 - random UUIDs,
 - Untitled,
 - New Object,
+- names truncated mid-word,
 - vague names with no category meaning.
 
-Prefer names such as:
-- `scrap_crate_a.glb`
-- `mission_terminal_a.glb`
-- `desert_predator_a.blend`
+**Name for what the asset is, not how big it is.** A shape or function word
+(Outcrop, Shelf, Snag, Boulder, Stump) communicates an asset's role and its
+believable size far better than a size word does, and it does not go stale when
+the size is revised. "Small" in a filename ages badly and tells a level designer
+nothing useful.
 
-Variants should be intentional and clearly named.
+**Name for what it actually is, not what it resembles.** Bare dead wood is
+Deadwood, not Tree; otherwise the name a living tree will need is already taken.
+
+**Variants should be intentional and clearly named.** Prefer a distinguishing
+word over a letter wherever a natural one exists. Two rules for variant sets:
+- Do not keep a bare base name alongside lettered variants (`Desert Tree`
+  together with `Desert Tree A`). It is then ambiguous whether the bare name
+  belongs to the series.
+- Never reuse an existing name for a different asset, including mid-way through
+  a rename pass.
+
+**Names are load-bearing once an asset is placed.** Godot scenes reference assets
+by file path, so renaming after placement breaks those references. Settle the
+name before an asset goes into a scene: renaming is nearly free beforehand and
+expensive afterwards.
 
 ## Final Principle
 
