@@ -122,15 +122,33 @@ Do not silently redesign an asset while repairing it.
 
 ## Asset Families
 
-Current broad gameplay/world categories include:
-- Characters / Humanoids
-- Creatures
-- Mechanical
-- Structures / Buildings
-- Weapons
-- Environment Props
+`GLB/` is organised by **gameplay system where one exists, and by art family where
+one does not**. That is why walls and workbenches sit together under Housing: the
+game treats them as one build kit, and splitting them by art category would break
+up something the player experiences as a unit.
 
-The game may use more granular subfolders. Do not flatten an established folder taxonomy without approval.
+- `Characters` - player and humanoid rigs
+- `Creatures` - living fauna
+- `Creature Lairs` - burrows, dens and nests
+- `Environment` - the natural world: geology, flora, fauna remains. Bulk scatter.
+- `Housing` - the settlement build kit: modular shelter pieces plus the furniture
+  and fixtures that go inside them
+- `Structures` - large standalone architecture and landmarks, placed whole
+- `Props` - manufactured set dressing, placed one at a time
+- `Lighting` - light fixtures
+- `Mechanical` - robots and mechanical units
+- `Vehicles` - rideable vehicles
+- `Weapons` - player weapons
+
+The dividing line between Environment and Props is **natural versus manufactured**,
+not indoor versus outdoor. The line between Structures and Props is whether the
+asset is architecture you place whole, or an object you dress a scene with.
+
+Shipped assets and their measured dimensions are recorded in `ASSET_INDEX.md`.
+
+Do not flatten an established folder taxonomy without approval. Folder renames
+break Godot resource paths exactly as file renames do, so settle a family's home
+before its assets are placed in scenes.
 
 ## Creature and Character Considerations
 
