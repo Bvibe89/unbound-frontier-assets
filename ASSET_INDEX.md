@@ -26,11 +26,10 @@ The player rig. `Human Base v4 Rigged` is the only one kept: full rig, 20 finger
 
 ## Creatures
 
-Living desert fauna. Heights are standing height; depth is body length.
+Living desert fauna, all rigged. Heights are standing height; depth is body length. None carry animation clips yet.
 
 | Asset | What it is | W x D x H | Class | Tris | Collision |
 |---|---|---|---|---|---|
-| Desert Predator Small | small spiked predator, crouched; same species family as the large one | 0.83 x 1.40 x 0.75 | SMALL | 1178 |  |
 | Desert Anteater | long-snouted burrowing forager | 1.04 x 2.90 x 1.70 | MEDIUM | 820 |  |
 | Desert Armadillo | armour-plated quadruped | 2.28 x 4.38 x 1.70 | MEDIUM | 855 |  |
 | Desert Grazer | deer-like herbivore | 0.59 x 1.78 x 1.70 | MEDIUM | 1102 |  |
@@ -60,6 +59,7 @@ The natural world: geology, flora, and fauna remains. Bulk scatter lives here. T
 | Desert Aloe | blunt-leaf aloe clump | 0.70 x 0.66 x 0.70 | SMALL | 154 | none |
 | Desert Deadwood Root | fallen dead root chunk | 1.40 x 0.66 x 0.74 | SMALL | 196 | trunk proxy |
 | Desert Burrower Carcass | dead armour-plated burrower | 1.48 x 1.60 x 0.74 | SMALL | 882 | none |
+| Desert Predator Carcass | dead small spiked predator; same species family as Desert Predator Large | 0.83 x 1.40 x 0.75 | SMALL | 1178 | none |
 | Desert Scrub Rock | rock slab with succulents growing beside it | 1.60 x 1.31 x 0.83 | SMALL | 184 | trimesh |
 | Desert Agave | agave/yucca spiky rosette | 0.88 x 0.83 x 0.85 | SMALL | 168 | none |
 | Desert Rock Shelf | stacked flat slabs | 2.20 x 1.72 x 0.87 | SMALL | 438 | trimesh |
@@ -200,6 +200,12 @@ visual and never need re-exporting.
   base colour is 34.6 KB against roughly 1.7 MB for its siblings. An optional
   quality upgrade, not a fault, and visible only on close inspection. This is
   unrelated to the UV item above; an earlier note here conflated the two.
+- The four living creatures are rigged but carry no animation clips: 30-46 joints
+  each, a single `Bone_000` root, and 0 animations. Their joints are Meshy's
+  generic `Bone_NNN` names, not a shared named convention, so each rig has to be
+  mapped by hand in Godot and no retargeting between them is possible as-is.
+  `Human Base v4 Rigged` is the only asset in the library with animation, at 47
+  joints and 12 clips.
 - Texture tiers are not uniform across the library. Assets from the first
   normalization pass carry a 1024 base map; the newer small props and scatter carry
   512. That is deliberate - tiering follows screen importance - but it does mean
