@@ -11,22 +11,18 @@ only; because the bands are height-derived it reads low for wide flat assets, so
 
 **W x D x H in metres**, measured from the shipped GLB's own accessor bounds, not
 from anything in a Blender session. Every asset is scaled against the 1.78 m / 5'10"
-human anchor and has its origin X/Z centred with ground contact at 0. The one
-exception is noted in its row.
+human anchor and has its origin X/Z centred with ground contact at 0 - verified for
+every asset listed here, with no exceptions.
 
-81 assets across 11 families.
+77 assets across 11 families.
 
 ## Characters
 
-Player and humanoid rigs. `Human Base v4 Rigged` is the current best: full rig, 20 finger bones, 12 animation clips.
+The player rig. `Human Base v4 Rigged` is the only one kept: full rig, 20 finger bones, 12 animation clips. Earlier versions and a rejected retexture experiment were removed. Its authoring scripts live in `Blender Source` and were written during the v3 pass, since v4 is v3's rig plus a face-texture transfer.
 
 | Asset | What it is | W x D x H | Class | Tris | Collision |
 |---|---|---|---|---|---|
-| Human Base v2 Rigged | player rig, 12 clips; superseded by v3/v4 | 1.92 x 0.34 x 1.86 | MEDIUM | 1744 |  |
-| Human Base v3 Rigged | player rig, rebuilt hands with 20 finger bones, 12 clips | 1.91 x 0.34 x 1.86 | MEDIUM | 1754 |  |
 | Human Base v4 Rigged | player rig, v3 plus transferred face texture - current best | 1.91 x 0.34 x 1.86 | MEDIUM | 1754 |  |
-| Humanoid | early unrigged humanoid base | 1.92 x 0.34 x 1.86 | MEDIUM | 1744 |  |
-| v3 Textured. Not good though | rejected retexture experiment; unrigged, still 4K, origin off the ground; **origin is 0.97 m below ground** | 2.00 x 0.36 x 1.95 | MEDIUM | 1754 |  |
 
 ## Creatures
 
@@ -191,15 +187,19 @@ visual and never need re-exporting.
 
 ## Known outstanding items
 
-- Six assets carry UV damage from an early normalization pass that re-unwrapped
-  islands while their base-colour textures stayed baked to the original UVs:
-  `Junk Pistol`, `Openable Crate`, `Frame Crate`, `Locker`, `Satellite Box`,
-  `Barricade`. `Junk Pistol` (0.10 MB) and `Locker` (0.23 MB) are conspicuously
-  smaller than comparable props, consistent with that damage. Their raw Meshy
-  originals no longer exist, so fixing them means regenerating from Meshy.
-- `v3 Textured. Not good though` is a rejected experiment: unrigged, 12.92 MB, still
-  4096/2048/4096, and the only asset in the library whose origin is not on the
-  ground. It is roughly 9% of the whole GLB folder on its own.
+- Six assets had their UVs re-unwrapped by an early normalization pass while their
+  base-colour textures stayed baked to the original UVs: `Junk Pistol`,
+  `Openable Crate`, `Frame Crate`, `Locker`, `Satellite Box`, `Barricade`.
+  Measured at 95.5-99.5% UV overlap with the pre-pass versions, at identical
+  triangle counts. The owner has since reviewed all six and their appearance is
+  acceptable, so this is recorded as provenance rather than as a defect - useful
+  only if a seam ever turns up on one of them. Their raw Meshy originals no longer
+  exist, so any future re-derivation means regenerating from Meshy.
+- `Junk Pistol` and `Locker` carry lossy JPEG textures where every comparable prop
+  carries lossless PNG, and `Junk Pistol` sits a tier lower at a 512 base map. Its
+  base colour is 34.6 KB against roughly 1.7 MB for its siblings. An optional
+  quality upgrade, not a fault, and visible only on close inspection. This is
+  unrelated to the UV item above; an earlier note here conflated the two.
 - Texture tiers are not uniform across the library. Assets from the first
   normalization pass carry a 1024 base map; the newer small props and scatter carry
   512. That is deliberate - tiering follows screen importance - but it does mean
