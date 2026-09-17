@@ -154,10 +154,22 @@ before its assets are placed in scenes.
 
 Humanoids and creatures may use different anatomy standards. Do not assume every creature has humanoid limbs or proportions.
 
+**Never un-rig a rigged asset.** If an asset arrives with a skin, joints or
+animation clips, those ship with it. Stripping a rig is never part of cleanup,
+normalization, optimization or a texture pass, and it is never an acceptable
+side effect of one.
+
 For rigged assets:
 - Preserve consistent bone naming and hierarchy once a standard has been approved.
 - Do not invent a new rig convention per asset.
 - Keep deformation simple and reliable rather than sophisticated for its own sake.
+- Preserve every animation clip. Clip count and joint count must match the source
+  after any processing.
+- Scale a rigged asset by scaling its armature, never by baking a factor into mesh
+  vertex coordinates - that desyncs the mesh from the skin's inverse bind matrices
+  and wrecks the deformation.
+- A rig is invisible in a static render. Verify it from the exported file's own
+  bytes: skin count, joint count and animation count, compared against the source.
 
 ## Export
 

@@ -61,6 +61,15 @@ Typical cleanup checklist:
 - validate UV/material behavior,
 - save a `.blend` source before final export.
 
+**Check for a rig before processing anything.** A static-asset pipeline will
+silently destroy a rig in at least two ways that no static render will reveal:
+glTF export with skins or animations disabled drops them outright, and baking a
+scale factor into mesh vertex coordinates desyncs the mesh from the skin's
+inverse bind matrices. If a source contains skins, joints, animations or
+`JOINTS_0`/`WEIGHTS_0` attributes, stop and handle it as a rigged asset - scale
+via the armature and export with skins and animations enabled. Never un-rig
+something to make it easier to process.
+
 Do not use destructive operations on the only copy of a raw generated asset.
 
 ## Optimization
@@ -95,6 +104,9 @@ Before placing an asset into `GLB`, verify:
 - no obvious mesh defects,
 - no unnecessary high-density hidden geometry,
 - materials survive export,
+- rigs and animations survive export: skin count, joint count and clip count all
+  match the source, checked from the exported file's bytes rather than from the
+  Blender session,
 - GLB reopens/imports successfully,
 - filename is descriptive and follows project naming conventions.
 
